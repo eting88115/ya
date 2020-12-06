@@ -3,18 +3,18 @@
 <%@page import="java.sql.*"%>
 <jsp:useBean id='objDBConfig' scope='session' class='hitstd.group.tool.database.DBConfig' />
 <%
-if(request.getParameter("memberId") !=null &&
-	request.getParameter("memberPwd") !=null){
+if(request.getParameter("stuID") !=null &&
+	request.getParameter("stuPwd") !=null){
 	Connection con=DriverManager.getConnection("jdbc:ucanaccess://"+objDBConfig.FilePath()+";");
 	Statement smt= con.createStatement();
-	String getpaperdata = "SELECT * FROM leelab WHERE memberId='"+
-			request.getParameter("memberId")+"' AND memberPwd='" +
-			request.getParameter("memberPwd")+"'";
+	String getpaperdata = "SELECT * FROM stuData WHERE stuID='"+
+			request.getParameter("stuID")+"' AND stuPwd='" +
+			request.getParameter("stuPwd")+"'";
 	ResultSet paperrs = smt.executeQuery(getpaperdata);
 	if(paperrs.next()){
-		session.setAttribute("accessId",request.getParameter("memberId"));
+		session.setAttribute("accessID",request.getParameter("stuID"));
 		//session.setMaxInactiveInterval(20); 自動登出
-		response.sendRedirect("index.jsp");
+		response.sendRedirect("str-front.jsp");
 	}else
 		out.println("帳號密碼不符！請重新登入");
 }
@@ -78,7 +78,7 @@ if(request.getParameter("memberId") !=null &&
 						</span>
 					</div>
 					<div class="wrap-input100 validate-input" data-validate="請輸入帳號">
-						<input class="input100" type="text" name="memberId" required >
+						<input class="input100" type="text" name="stuID" required >
 						<span class="focus-input100"></span>
 					</div>
 					
@@ -92,7 +92,7 @@ if(request.getParameter("memberId") !=null &&
 						</a>
 					</div>
 					<div class="wrap-input100 validate-input" data-validate = "請輸入密碼">
-						<input class="input100" type="password" name="memberPwd"  required>
+						<input class="input100" type="password" name="stuPwd"  required>
 						<span class="focus-input100"></span>
 					</div>
 
