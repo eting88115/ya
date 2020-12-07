@@ -15,9 +15,11 @@ public class FolderConfig {
 	}
 	public String WebsiteRelativeFilePath(){
 		   //li's 
-			String Path="assets/images/member/";
+			//String Path="assets/images/member/";
 		   //Yujia's 
 			 //String DBPath="D:\\Java\\eclipse-workspace\\leelab\\WebContent\\assets\\images\\member\\";
+			//liao's
+			String DBPath="C:\\Users\\Ting\\git\\ya\\WebContent\\assets\\images\\member\\";
 		   return Path;		
 		}
 }
